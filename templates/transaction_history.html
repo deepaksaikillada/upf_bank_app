@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UPF Bank - Transaction History</title>
+    <!-- Include Bulma CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: sans-serif;
+            line-height: 1.5;
+            min-height: 100vh;
+            background: #006699;
+            background-image: url('/static/dashboard.jpg');
+            background-size: cover;
+            flex-direction: column;
+            margin: 0;
+            color: white;
+        }
+
+        .main {
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            transition: transform 0.2s;
+            width: 800px; /* Increase the width to make the box bigger */
+            text-align: center;
+        }
+
+        h1 {
+            color: #006699;
+        }
+        img {
+            width: 3em; /* Set the width to the size you want */
+            height: 3em; /* Set the height to the size you want */
+            vertical-align: middle; /* Align the img vertically with text */
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            width: 100%;
+            margin-top: 10px;
+            margin-bottom: 5px;
+            text-align: left;
+            color: #555;
+            font-weight: bold;
+        }
+
+        input {
+            display: block;
+            width: 100%;
+            margin-bottom: 15px;
+            padding: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 15px;
+            margin-bottom: 15px;
+            border: none;
+            color: white;
+            cursor: pointer;
+            background-color: #006699;
+            width: 100%;
+            font-size: 16px;
+        }
+
+        .wrap {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .notification {
+            background-color: #ff4d4d;
+            padding: 10px;
+            margin-top: 15px;
+            border-radius: 5px;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="main">
+        <h1><b>UPF Bank<b/></h1>
+        <h3>Transaction History</h3>
+        <img src="/static/transaction-history.png" alt="favicon">
+
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <div class="notification">
+                    {{ messages[0] }}
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        <table class="table is-fullwidth">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Type</th>
+                    <th>Amount (Rs)</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for transaction in transaction_history %}
+                    <tr>
+                        <td>{{ transaction.transaction_date }}</td>
+                        <td>{{ transaction.transaction_type }}</td>
+                        <td>{{ transaction.amount }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <!-- Back button to go back to the dashboard -->
+        <a href="{{ url_for('dashboard') }}" class="button is-primary mt-4">Back to Dashboard</a>
+
+    </div>
+</body>
+
+</html>

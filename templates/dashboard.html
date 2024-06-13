@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UPF Bank - Dashboard</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>
+        /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+        .row.content {
+            height: 620px;
+        }
+
+        /* Set background color and 100% height */
+        .sidenav {
+            background-color: #006699;
+            height: 92%;
+            color: white;
+            border-radius: 10px;
+            background-image: url('/static/dashboard.jpg');
+            background-size: cover;
+        }
+
+        /* On small screens, set height to 'auto' for the grid */
+        @media screen and (max-width: 767px) {
+            .row.content {
+                height: auto;
+            }
+        }
+
+        /* Additional styling for your content */
+        .content {
+            background-color: #f1f1f1;
+            padding: 20px;
+            border-radius: 15px;
+            background-image: url('/static/dashboard.jpg');
+            background-size: cover;
+        }
+
+        .well {
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        /* Sign-out button styling */
+        #sign-out-btn {
+            position: fixed;
+            bottom: 10px;
+            left: 10px;
+            background-color: #006699;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* Feature block styling */
+        .feature-block {
+            display: inline-block;
+            width: 47%;
+            margin: 1%;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s;
+            border-radius: 10px;
+        }
+
+        .feature-block:hover {
+            background-color: #e6f7ff;
+            transition: background-color 0.3s;
+            cursor: pointer;
+        }
+
+        /* Adjusted button styling */
+        .feature-block a {
+            color: white;
+            background-color: #006699;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+
+        .feature-block a:hover {
+            background-color: #005580;
+        }
+    </style>
+</head>
+
+<body>
+
+    <a href="{{ url_for('login') }}" id="sign-out-btn" class="btn btn-link">Sign Out</a>
+
+    <div class="container-fluid">
+        <div class="row content">
+            <div class="col-sm-3 sidenav">
+                <h2>UPF Bank</h2>
+                <ul class="nav nav-pills nav-stacked">
+                    <li class="active"><a href="#">Dashboard</a></li>
+                    <li><a href="/fund_transfer">Fund Transfer</a></li>
+                    <li><a href="/transaction_history">Transaction History</a></li>
+                    <li><a href="/apply_loan">Apply for Loan</a></li>
+                    <li><a href="/account_balance">Account Balance</a></li>
+                    <li><a href="/upload_kyc_form">Upload KYC</a></li>
+                    <!-- Add more features here as needed -->
+                </ul><br>
+            </div>
+            <div class="col-sm-9 content">
+
+                <div class="well">
+                    <h4>Dashboard</h4>
+                    <p>Welcome, {{ username }}! View your account overview.</p>
+                </div>
+                <!-- Fund Transfer Feature -->
+                <div class="feature-block">
+                    <h4>Fund Transfer</h4>
+                    <p>Initiate fund transfers.</p>
+                    <a href="/fund_transfer">Go to Fund Transfer</a>
+                </div>
+                <!-- Apply for Loan Feature -->
+                <div class="feature-block">
+                    <h4>Apply for Loan</h4>
+                    <p>Apply for a loan amount.</p>
+                    <a href="/apply_loan">Go to Loan Application</a>
+                </div>
+                <!-- Transaction History Feature -->
+                <div class="feature-block">
+                    <h4>Transaction History</h4>
+                    <p>View your transaction history.</p>
+                    <a href="/transaction_history">Go to Transaction History</a>
+                </div>
+                <!-- Account Balance Feature -->
+                <div class="feature-block">
+                    <h4>Account Balance</h4>
+                    <p>View your account balance.</p>
+                    <a href="/account_balance">Go to Account Balance</a>
+                </div>
+                <!-- Upload KYC Feature -->
+                <div class="feature-block">
+                    <h4>Upload KYC</h4>
+                    <p>Submit your KYC form.</p>
+                    <a href="/upload_kyc_form">Go to Upload KYC</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

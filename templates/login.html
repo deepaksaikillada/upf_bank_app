@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UPF Bank - Login</title>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: sans-serif;
+            line-height: 1.5;
+            min-height: 100vh;
+            background-image: url('/static/images.jpg');
+            background-size: cover;
+            flex-direction: column;
+            margin: 0;
+            color: white;
+        }
+        .main {
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            transition: transform 0.2s;
+            width: 500px;
+            text-align: center;
+            margin: 0 auto; /* Center the box horizontally */
+            margin-top: 50px; /* Adjust the top margin as needed */
+            margin-left: 700px;
+            position: relative; /* Make it relative for absolute positioning of the favicon */
+        }
+        h1 {
+            color: #1a0d00;
+            display: inline-block; /* Make inline-block to align with img */
+            margin-right: 10px;
+            margin-top: 10px /* Adjust the margin as needed */
+        }
+        img {
+            width: 2em; /* Set the width to the size you want */
+            height: 2em; /* Set the height to the size you want */
+            vertical-align: middle; /* Align the img vertically with text */
+            margin-bottom: 20px;
+        }
+        h4{
+            color:#006699;
+            margin-right:280px
+        }
+
+        label {
+            display: block;
+            width: 100%;
+            margin-top: 10px;
+            margin-bottom: 5px;
+            text-align: left;
+            color: #555;
+            font-weight: bold;
+        }
+
+        input {
+            display: block;
+            width: 100%;
+            margin-bottom: 15px;
+            padding: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 15px;
+            margin-bottom: 15px;
+            border: none;
+            color: white;
+            cursor: pointer;
+            background-color: #1a0d00;
+            width: 100%;
+            font-size: 16px;
+        }
+
+        .wrap {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .notification {
+            background-color: #ff4d4d;
+            padding: 10px;
+            margin-top: 15px;
+            border-radius: 5px;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="main">
+        <img src="/static/bank.png" alt="favicon">
+        <h1>UPF Bank</h1>
+        <h4>Enter your login credentials</h4>
+
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <div class="notification">
+                    {{ messages[0] }}
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        <form action="{{ url_for('login') }}" method="post">
+            <label for="username">
+                Username:
+            </label>
+            <input type="text" id="username" name="username" placeholder="Enter your Username" required>
+
+            <label for="password">
+                Password:
+            </label>
+            <input type="password" id="password" name="password" placeholder="Enter your Password" required>
+
+            <div class="wrap">
+                <button type="submit">
+                    Submit
+                </button>
+            </div>
+        </form>
+        <p>
+            <a href="{{ url_for('signup') }}" style="text-decoration: none; color: #006699;">
+                Not registered? Create an account
+            </a>
+        </p>
+
+    </div>
+</body>
+
+</html>

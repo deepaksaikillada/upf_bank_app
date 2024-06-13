@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UPF Bank - Account Balance</title>
+    <!-- Include Bulma CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: sans-serif;
+            line-height: 1.5;
+            min-height: 100vh;
+            background: #006699;
+            background-image: url('/static/dashboard.jpg');
+            background-size: cover;
+            flex-direction: column;
+            margin: 0;
+            color: white;
+        }
+
+        .main {
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            transition: transform 0.2s;
+            width: 500px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #006699;
+        }
+        img {
+            width: 2.5em; /* Set the width to the size you want */
+            height: 2.5em; /* Set the height to the size you want */
+            vertical-align: middle; /* Align the img vertically with text */
+            margin-bottom: 20px;
+        }
+
+        .notification {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .back-button {
+            display: block;
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 10px;
+            border: none;
+            color: white;
+            cursor: pointer;
+            background-color: #006699;
+            width: 100%;
+            font-size: 16px;
+            text-decoration: none;
+        }
+
+        .back-button:hover {
+            background-color: #005580;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="main">
+        <h1><b>Account Balance</b></h1>
+        <img src="/static/balance-sheet.png" alt="favicon">
+
+        <div class="notification is-success">
+            {{ username }}, your account balance is Rs {{ total_balance }}.
+        </div>
+
+        <!-- Back button to go back to the dashboard -->
+        <a href="{{ url_for('dashboard') }}" class="back-button">Back to Dashboard</a>
+
+    </div>
+</body>
+
+</html>
